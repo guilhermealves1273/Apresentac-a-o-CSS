@@ -1,0 +1,438 @@
+/* Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variáveis */
+:root {
+    --main-color: rgb(82, 109, 153);
+    --secondary-color: rgba(88,109,153,.75);
+    --bg-color: rgb(255, 255, 255);
+    --title-color: #000;
+    --text-color: rgb(0, 0, 0);
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --nav-color:rgb(30,144,255);
+    --text-nav:rgb(255,255,255);
+    --min-height-navbar: 4rem 2rem;
+    --color-red:rgb(235, 70, 70);
+
+
+    --color: #ffe9e9;
+    --color-dark: darken($color, 10%);
+    --color-border: rgba(darken($color, 60%), .45);
+    --color-text: darken($color, 85%);
+}
+
+
+.botao_dark{
+    position: absolute;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.botao_dark div input{
+    width: 20px;
+    height: 20px;
+
+}
+
+.botao-center{
+    position:relative;
+    right: 1%;
+    margin-top: 20px;
+    background-color: rgb(9,144,255);
+    border: solid 2px black;
+    padding: 3px;
+    height: 4rem;
+    margin-top: 1px;
+
+}
+
+#botao{
+    background-color: black;
+    border-solid:black solid 1px;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+h5#light{color: black}
+h5#dark{color: white}
+
+
+
+
+
+/* CSS Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-weight: var(--font-weight-regular);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--title-color);
+}
+p b{
+color: black;
+}
+
+nav {
+    background-color: var(--nav-color);
+}
+
+nav .list-item:hover,
+nav .list-item:focus {
+    color: var(--text-nav) !important;
+}
+
+nav div ul li:hover, nav div ul li:focus {
+    
+   background-color: var(--color-red);
+   border-radius: 10px 10px 10px 10px;
+}
+
+@media screen and (max-width: 575px) {
+    .nav-item {
+        text-align: center;
+    }
+    
+    .botao-center{
+        
+        display: flex;
+        left: 37%;
+        justify-content: center;
+        align-items: center;  
+        text-align: center;
+        width: 100px;
+        height: 2rem;
+        padding-top: 10px;
+        
+    }
+
+   
+
+    h5#light{color: black;}
+
+    
+}
+
+section {
+    padding: var(--min-height-navbar);
+    width: 100%;
+}
+
+section > h2 {
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+header .header-card {
+    flex: 1 1 300px;
+    height: 300px;
+}
+
+header .header-card:last-child {
+    /* background-color: rgba(0,0,0,.025); */
+    min-width: 300px;
+}
+
+@media screen and (max-width: 648px) {
+    header .header-card:last-child {
+        text-align: center;
+    }
+}
+
+/* Contacts */
+
+#contacts-wrapper,
+#education-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+}
+
+#contacts-wrapper > .contact-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 300px;
+    gap: 1rem;
+    text-align: center;
+    background-color: rgba(228, 17, 17, 0.025);
+    padding: 2rem;
+    box-shadow: var(--color-red) 0px 0px 5px 0px;
+}
+
+#contacts-wrapper > .contact-card > .contact-button > a {
+
+    
+    text-align: center;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    background-color: var(--nav-color);
+    color: var(--bg-color);
+    border-radius: 4px;
+    
+
+}
+
+#contacts-wrapper > .contact-card > .contact-button > a:hover{
+
+    
+    text-align: center;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    background-color: rgb(235, 70, 70);
+    color: var(--bg-color);
+    border-radius: 4px;
+    
+
+}
+
+
+
+#contacts-wrapper > .contact-card > .contact-image > icon {
+    font-size: 2rem;
+}
+
+
+#education-wrapper > .card {
+    max-width: 300px;
+}
+#contacts-wrapper > .contact-card > .contact-button > i {
+    font-size: 2rem;
+}
+
+#education-wrapper > .card:hover {
+    max-width: 350px;
+    box-shadow: rgb(235, 70, 70) 4px 4px 4px 0px;
+    z-index: 1;
+}
+
+
+.progress-bar{
+    background-color: var(--nav-color);
+}
+
+.frameworks{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+.frameworks div a:hover,
+.frameworks div a:focus {
+
+    background-color: rgb(235, 70, 70);
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+
+}
+.frameworks div div a:hover {
+
+    background-color: var(--nav-color);
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+
+
+
+.soft-skills{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+
+}
+/*
+.soft-skills div div a:hover{
+    background-color: rgb(235, 70, 70);
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+}
+.soft-skills div a:hover{
+    background-color: var(--nav-color);
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+}
+*/
+
+
+
+
+#form {
+    text-align: center;
+    margin: auto;
+    max-width: 85vh;
+    padding-top: 100px;
+}
+
+#form input, #form textarea{
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: left;
+    
+}
+
+ #form input:focus,
+ #form textarea:focus {
+   border-color: var(--nav-color);
+    
+}
+
+#form label,
+#form .grupo {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#form button {
+    width: calc(50vh - 150px);
+    padding: 10px 30px;
+    background-color: var(--nav-color);
+    color: white;
+    font-size: 1.125rem;
+    border: 2px solid #303030;
+    border-radius: 10px;
+}
+
+#form button:hover,
+#form button:focus {
+    background-color:rgb(3, 193, 29);
+}
+
+#icon{
+    height: 50px;
+    padding-bottom: 100px;
+}
+
+
+
+
+
+
+@media (prefers-color-scheme: dark) {
+
+     body{
+        background-color: #282828;
+        color:white;
+     }
+
+     h1, h2, h3, h4, h5 {
+        color: white;
+    }
+
+    #education div div div div,p{
+        color: black;
+    }
+
+
+
+    #contacts-wrapper > .contact-card {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 300px;
+        gap: 1rem;
+        text-align: center;
+        background-color: rgba(0,0,0,.025);
+        padding: 2rem;
+        box-shadow: rgb(235, 70, 70) 0px 5px 10px 7px;
+    }
+    
+    #about div p{
+        color: white;
+    }
+    #header div p,b {
+        color: white;
+    }
+
+}
+
+.dark{
+        background-color: #282828;
+        color:white;
+
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5 {
+        color: white;
+    }
+
+.dark #education div div div div,p{
+        color: black;
+    }
+    
+.dark #contacts-wrapper > .contact-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 300px;
+    gap: 1rem;
+    text-align: center;
+    background-color: rgba(0,0,0,.025);
+    padding: 2rem;
+    box-shadow: rgb(235, 70, 70) 0px 5px 10px 7px;
+}
+
+.dark #about div p{
+    color: white;
+}
+.dark #header div p,b {
+    color: white;
+}
+
+.dark b{
+    color: white;
+}
+
+.dark h5#light{color: black}
+
+.dark h5#dark{color: white;}
+
+ .dark #botao{
+    background-color: white;
+    border-solid:black solid 1px;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
