@@ -90,7 +90,7 @@ p b{
 color: black;
 }
 
-nav {
+nav  {
     background-color: var(--nav-color);
 }
 
@@ -221,7 +221,7 @@ header .header-card:last-child {
 #education-wrapper > .card:hover {
     max-width: 350px;
     box-shadow: rgb(235, 70, 70) 4px 4px 4px 0px;
-    z-index: 1;
+    
 }
 
 .frameworks{
