@@ -42,30 +42,22 @@
     margin-top: 20px;
     background-color: rgb(9,144,255);
     border: solid 2px black;
-    padding: 3px;
-    height: 4rem;
+    padding: .5rem;
     margin-top: 1px;
-
 }
 
 #botao{
     background-color: black;
-    border-solid:black solid 1px;
+    border:black solid 1px;
     border-radius: 5px 5px 5px 5px;
     color: white;
     margin-right: 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+    display: grid;
+    place-items: center;   
 }
-
-h5#light{color: black}
-h5#dark{color: white}
-
-
-
-
 
 /* CSS Reset */
 * {
@@ -219,6 +211,7 @@ header .header-card:last-child {
 
 #education-wrapper > .card {
     max-width: 300px;
+    transition: .2s all;
 }
 #contacts-wrapper > .contact-card > .contact-button > i {
     font-size: 2rem;
@@ -397,7 +390,12 @@ header .header-card:last-child {
     text-align: center;
     background-color: rgba(0,0,0,.025);
     padding: 2rem;
+    transition: all .2s;
+}
+
+.dark #contacts-wrapper > .contact-card:hover {
     box-shadow: rgb(235, 70, 70) 0px 5px 10px 7px;
+    background-color: rgba(0,0,0,.25);
 }
 
 .dark #about div p{
@@ -414,19 +412,6 @@ header .header-card:last-child {
 .dark h5#light{color: black}
 
 .dark h5#dark{color: white;}
-
- .dark #botao{
-    background-color: white;
-    border-solid:black solid 1px;
-    border-radius: 5px 5px 5px 5px;
-    color: white;
-    margin-right: 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-}
-
 
 
 
