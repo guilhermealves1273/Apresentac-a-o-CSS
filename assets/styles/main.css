@@ -26,6 +26,10 @@
     transition: all .2s;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 .botao_dark{
     position: absolute;
     padding-left: 30px;
@@ -104,19 +108,16 @@ nav .list-item:focus {
     .nav-item {
         text-align: center;
     }
-    
-    .botao-center{
-        
-        display: flex;
-        left: 37%;
-        justify-content: center;
-        align-items: center;  
+
+    .tema-wrapper {
         text-align: center;
-        width: 150px;
-        margin: 0;
+        display: grid;
+        justify-content: center;
     }
 
-   
+    #botao {
+        margin-right: 0px;
+    }
 
     h5#light{color: black;}
 
