@@ -22,6 +22,9 @@
     --color-text: darken($color, 85%);
 }
 
+* {
+    transition: all .2s;
+}
 
 .botao_dark{
     position: absolute;
@@ -89,11 +92,10 @@ nav {
 
 nav .list-item:hover,
 nav .list-item:focus {
-    color: var(--text-nav) !important;
+    color: var(--text-nav) ;
 }
 
-nav div ul li:hover, nav div ul li:focus {
-    
+.nav-item:hover, .nav-item:focus {
    background-color: var(--color-red);
    border-radius: 10px 10px 10px 10px;
 }
@@ -110,10 +112,8 @@ nav div ul li:hover, nav div ul li:focus {
         justify-content: center;
         align-items: center;  
         text-align: center;
-        width: 100px;
-        height: 2rem;
-        padding-top: 10px;
-        
+        width: 150px;
+        margin: 0;
     }
 
    
@@ -204,14 +204,14 @@ header .header-card:last-child {
 
 
 
-#contacts-wrapper > .contact-card > .contact-image > icon {
-    font-size: 2rem;
+#contacts-wrapper > .contact-card > .contact-image > i {
+    font-size: 3rem;
+    background: transparent;
 }
 
 
 #education-wrapper > .card {
     max-width: 300px;
-    transition: .2s all;
 }
 #contacts-wrapper > .contact-card > .contact-button > i {
     font-size: 2rem;
@@ -221,11 +221,6 @@ header .header-card:last-child {
     max-width: 350px;
     box-shadow: rgb(235, 70, 70) 4px 4px 4px 0px;
     z-index: 1;
-}
-
-
-.progress-bar{
-    background-color: var(--nav-color);
 }
 
 .frameworks{
@@ -390,7 +385,6 @@ header .header-card:last-child {
     text-align: center;
     background-color: rgba(0,0,0,.025);
     padding: 2rem;
-    transition: all .2s;
 }
 
 .dark #contacts-wrapper > .contact-card:hover {
@@ -413,11 +407,14 @@ header .header-card:last-child {
 
 .dark h5#dark{color: white;}
 
+.contact-card .contact-text {
+    opacity: 0;
+}
 
+.contact-card:hover .contact-text {
+    opacity: 1;
+}
 
-
-
-
-
-
-
+.progress-bar{
+    background-color: var(--nav-color);
+}
