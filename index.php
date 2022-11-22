@@ -392,5 +392,11 @@
     <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
     <script src="./index.js"></script>
+ 
   </body>
 </html>
+
+<?php
+include 'connection.php' ;
+$pdo=pdo_connect_mysql();
+?>
