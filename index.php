@@ -54,6 +54,9 @@
             <a href="#about" class="nav-link text-white">Sobre Mim</a>
           </li>
           <li class="nav-item">
+            <a href="#languages" class="nav-link text-white">Languages</a>
+          </li>
+          <li class="nav-item">
             <a href="#education" class="nav-link text-white">Educação</a>
           </li>
           <li class="nav-item">
@@ -64,6 +67,9 @@
           </li>
           <li class="nav-item">
             <a href="#form" class="nav-link text-white">Contacta-me</a>
+          </li>
+          <li class="nav-item">
+            <a href="./cms/auth/login.php" class="nav-link text-white">Backoffice</a>
           </li>
         </ul>
         <div class="tema-wrapper">
@@ -124,6 +130,24 @@
       </div>
     </section>
     <hr />
+
+    <section id="languages">
+      <h2 class="text-center">Linguagens</h2>
+
+      
+    
+<!--     
+    <div id="languages1"> 
+      <img src="./assets/images/portugal.webp" class="rounded float-left h-25" alt="...">
+      <img src="./assets/images/ingles.jpg" class="rounded float-right h-25" alt="...">
+    </div>  -->
+    </section>
+
+    <hr/>
+
+
+
+
 
     <section id="education">
       <h2 class="text-center mb-5">Educação</h2>
@@ -339,12 +363,12 @@
 
         <div class="contact-card">
           <div class="contact-image">
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
           </div>
-          <div class="contact-text">@guialves3678</div>
+          <div class="contact-text">Guilherme Alves</div>
           <div class="contact-button">
-            <a href="https://www.instagram.com/guialves3678/" target="_blank">
-              Contactar
+            <a href="https://www.linkedin.com/in/guilherme-alves-148351224/" target="_blank">
+              Visitar
             </a>
           </div>
         </div>
@@ -359,6 +383,8 @@
           </div>
         </div>
       </div>
+
+      
 
 
       
@@ -396,7 +422,8 @@
   </body>
 </html>
 
+
 <?php
-include 'connection.php' ;
+include 'db/connect.php' ;
 $pdo=pdo_connect_mysql();
 ?>
