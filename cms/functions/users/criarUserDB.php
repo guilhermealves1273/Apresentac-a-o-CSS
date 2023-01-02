@@ -59,8 +59,8 @@
 
     <div class="row mt-5">
       <div class="col-12 display-4 text-info">
-        USERS
-        <a href="../pages/users.php" type="button" class="btn btn-outline-info float-end">
+        Utilizador
+        <a href="../../pages/users/users.php" type="button" class="btn btn-outline-info float-end">
           <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
           </svg>
@@ -68,11 +68,7 @@
       </div>
     </div>
 
-    <div class="row mt-5">
-      <div class="col-12">
-          <div class="display-4">Criar User</div>
-      </div>
-    </div>
+   
     
     <div class="row my-5">
       <div class="col-12">

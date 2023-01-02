@@ -60,7 +60,7 @@ create table ling_prog(
 	nome varchar(100) not null,
 	nivel int not null
 	
-)
+);
 
 create table mensagens(
 	id int primary key auto_increment,
@@ -69,8 +69,7 @@ create table mensagens(
 	informacao varchar(500) not null,
 	estado varchar (20),
 	idUser int 
-	
-)
+);
 
 
 
