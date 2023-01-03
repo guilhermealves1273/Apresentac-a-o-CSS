@@ -39,13 +39,8 @@ a{border-radius: 4px 4px 4px 4px ;
     width: 50px;
 }
 
-.passLabel{
-    padding-top:20px;
-    padding-left: 1px;
-}
-.nomeLabel{  
-    padding-left: 1.5rem;
-}
+
+
 .voltarBT{
     
     padding:4px;
@@ -69,3 +64,16 @@ a{border-radius: 4px 4px 4px 4px ;
     font-size: 18px;
   }
 
+#nome{
+    width: 300px;
+
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+   
+    
+}
+#LabelFrase{
+   position: relative;
+   margin: 10px;
+}

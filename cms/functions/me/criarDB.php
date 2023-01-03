@@ -35,10 +35,6 @@
 <body>
 
 
-
-
-
-
 <?php
 
 
@@ -53,21 +49,27 @@
   if (isset($_POST) && !empty($_POST)) {
     $existemDadosPOST = true;
     extract($_POST);
-   
     $dados=array($nome,$data,$localidade,$profissao);
-    # preparar a query
-    $stmt= $pdo->prepare('Insert into me(fullname,dt_nascimento,localidade,profissao) values(?,?,?,?)');
+    $target_dir = './images/';
+    $target_file = $target_dir . basename($_FILES["filename"]["name"]);
+    $ok=0;
+    
+    if (move_uploaded_file($_FILES["filename"]["name"],$target_dir)) {
+        $ok=1;
+        
+        $stmt = $pdo->prepare('INSERT INTO me(fullname,dt_nascimento,localidade,profissao,image) VALUES (:fullname, :dt_nascimento, :localidade, :profissao, :image)');
+        $stmt->bindParam(":fullname", $dados[0], PDO::PARAM_STR);
+        $stmt->bindParam(":dt_nascimento", $dados[1], PDO::PARAM_STR);
+        $stmt->bindParam(":localidade", $dados[2], PDO::PARAM_STR);
+        $stmt->bindParam(":profissao", $dados[3], PDO::PARAM_STR);
+        $stmt->bindParam(":image", $target_file, PDO::PARAM_STR);
+        $stmt->execute();
 
-    # executar instrução 
-    $stmt->execute($dados);
-
+    }
+    else {
+      echo $_FILES["filename"]["name"]; 
+    }
   } 
-
-
-
-
-
-  
 
   ?>
 
@@ -76,7 +78,10 @@
     <div class="row mt-5">
       <div class="col-12 display-4 text-info">
         Informaçãoes pessoais
-        <a href="../pages/users.php" type="button" class="btn btn-outline-info float-end">
+        <?php echo $_FILES["filename"]["name"]?>
+        <?php echo $target_file?>
+        <?php echo $ok?>
+        <a href="../../pages/me/me.php" type="button" class="btn btn-outline-info float-end">
           <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
           </svg>
@@ -101,7 +106,7 @@
           <div class="alert alert-danger" role="alert">
             <strong>Acesso indevido a esta página.</strong>
           </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/users/criarUser.php" role="button">Ver perfil</a>
+          <a class="btn btn-primary float-end mt-5" href="../../pages/me/me.php" role="button">Ver perfil</a>
         <?php
         }
         ?>

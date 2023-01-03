@@ -21,24 +21,13 @@ a{border-radius: 4px 4px 4px 4px ;
     padding: 4px;
     margin-top: 5px;
 }
-
-#bt_criar {
+.bt_criar{
     margin-top:20px;
     background-color:rgb(30,144,255);
     border-radius: 4px;
-    color: white;
     padding:4px;
     width: 50px;
 }
-
-#bt_criar:hover{
-    margin-top:20px;
-    background-color:green;
-    border-radius: 4px;
-    padding:4px;
-    width: 50px;
-}
-
 .passLabel{
     padding-top:20px;
     padding-left: 1px;
@@ -68,4 +57,48 @@ a{border-radius: 4px 4px 4px 4px ;
     left: 16px;
     font-size: 18px;
   }
+
+  .quadrado{
+    border : solid 1px black;
+    border-radius: 10px 10px 10px 10px ;
+    background-color: white;
+    color:rgb(30,144,255);
+    width: 120px;
+    font-size: 20px;
+}
+.lavelDIV{
+    
+    margin-top: 1rem;
+   
+}
+
+.lavelDIV label h4{
+    padding-right: 3px;
+}
+
+
+#AtualizarBT {
+    margin-top:20px;
+    background-color:rgb(30,144,255);
+    border-radius: 4px;
+    padding:4px;
+    color:white
+    
+
+}
+
+#AtualizarBT:hover {
+    margin-top:20px;
+    background-color: green;
+    border-radius: 4px;
+    padding:4px;
+    color:white
+    
+
+}
+
+#labelName{
+    font-family: 'Open Sans', sans-serif;
+    
+}
 

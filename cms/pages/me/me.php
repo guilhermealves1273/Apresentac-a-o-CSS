@@ -46,7 +46,7 @@ if($arrayVazio){
 
 ?>
 
-<form action="../../functions/me/criarDB.php" method="post">
+<form action="../../functions/me/criarDB.php" method="post" enctype="multipart/form-data">
 
     <label for="nome">Nome Completo</label>
     <input type="text" name="nome" id="nome" >
@@ -59,6 +59,9 @@ if($arrayVazio){
 
     <label for="profissao">Profissão</label>
     <input type="text" name="profissao" id="profissao" >
+
+    <label for="filename">Filename</label>
+    <input type="file" name="filename" placeholder="c://" id="filename" required>
 
    
 
@@ -73,7 +76,7 @@ if($arrayVazio){
 <?php }else{  ?>  
 
 
-    <form action="../../functions/me/atualizarDB.php" method="post">
+    <form action="../../functions/me/atualizarDB.php" method="post" enctype="multipart/form-data">
 
      <label for="nome">Nome Completo</label>
     <input type="text" name="nome" id="nome" value=" <?php  echo $dados['fullname']?>">
@@ -86,10 +89,10 @@ if($arrayVazio){
 
     <label for="profissao">Profissão</label>
     <input type="text" name="profissao" id="profissao" value="<?php  echo $dados['profissao']?>">
-    
 
-    <label >Imagem</label>
-    <input type="file" name="fileToUpload" id="fileToUpload">
+    <label for="filename">Filename</label>
+    <input type="file" name="filename" placeholder="c://" id="filename" required>
+    
 
     <input type="submit" value="Atualizar">
 

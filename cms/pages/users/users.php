@@ -45,7 +45,7 @@
     <div class="row my-5">
       <div class="col-12">
         <div class="list-group">
-          <a class="list-group-item list-group-item-action active">
+          <a class="list-group-item list-group-item-action active ">
             Utilizadores 
             <span class="float-end fw-bold"> <?php echo $stmt->rowCount();?> Utilizadores</span>
           </a>
@@ -72,7 +72,7 @@
                 
             </table>
 
-            <div>
+            <div class="azul">
             <a class="btn btn-primary float-end mt-5" href="./criarUser.php" role="button">Inserir User</a>
             </div>
 

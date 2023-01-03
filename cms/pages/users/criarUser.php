@@ -29,7 +29,7 @@
     <input type="text" name="pass" id="pass" required>
     </div>
     <input type="hidden" value="sem_role" name="role" id="role">
-    <input type="submit" value="Criar" class="bt_criar">
+    <input type="submit" value="Criar" id="bt_criar">
     <input type="reset" value="Limpar" class="bt_limpar">
 </form>
 
@@ -37,7 +37,7 @@
     </div>
   </div>
 </div>
-<button onclick="window.location.href='../welcome.php'" class="voltarBT topleft fa fa-arrow-left"></button>
+<button onclick="window.location.href='./users.php'" class="voltarBT topleft fa fa-arrow-left"></button>
 </div>
 
 <script src="https://use.fontawesome.com/62e43a72a9.js"></script>
