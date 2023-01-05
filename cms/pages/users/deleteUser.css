@@ -60,6 +60,7 @@ div.erro h3{
     background-color: white;
     color:rgb(30,144,255);
     width: 120px;
+    position: relative;
 }
 
 #botao{
@@ -70,7 +71,7 @@ div.erro h3{
     font-size: 20px;
     margin-top: 10px;
     position: relative;
-    left: 0.5rem;
+    width: 100px;
    
 }
 
