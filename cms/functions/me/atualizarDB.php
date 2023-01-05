@@ -15,30 +15,64 @@
 
 <body>
 
-
-
-  <?php
- require('../../db/connect.php');
- $pdo = pdo_connect_mysql();
+ <?php
+require("../../db/connect.php");
+  $pdo= pdo_connect_mysql();
 
   // Verificação da existência de POST de informação, proveniente do formulário
   $existemDadosPOST = false;
-  if (isset($_POST) && !empty($_POST)) {
+  if (isset($_POST['uploadBtn']) == 'Atualizar') {
     $existemDadosPOST = true;
-  
     extract($_POST);
-   
     $dados=array($nome,$data,$localidade,$profissao);
 
-        # preparar a query
-    $stmt= $pdo->prepare('Update me set fullname=?,dt_nascimento=?,localidade=?,profissao=? ');
+        $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+        $fileName = $_FILES['uploadedFile']['name'];
+        $fileSize = $_FILES['uploadedFile']['size'];
+        $fileType = $_FILES['uploadedFile']['type'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
     
-  # executar instrução 
-    $stmt->execute($dados);
-  
-    }
+        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+        $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // $uploadFileDir = $_SERVER['DOCUMENT_ROOT'] . '/SIR/cms/uplink/uploaded_files/';
+            $uploadFileDir = '../../uplink/uplouded_files';
+            $dest_path = $uploadFileDir . $newFileName;
+    
+            if(move_uploaded_file($fileTmpPath, $dest_path))
+            {
+              $stmt= $pdo->prepare('Update me set fullname=?,dt_nascimento=?,localidade=?,profissao=?,imagem=? ');
+            
+              $stmt->bindParam(1, $dados[0] , PDO::PARAM_STR);
+              $stmt->bindParam(2, $dados[1] );
+              $stmt->bindParam(3, $dados[2] , PDO::PARAM_STR);
+              $stmt->bindParam(4, $dados[3] , PDO::PARAM_STR);
+              $stmt->bindParam(5, $newFileName);
+              $stmt->execute();
 
-  ?>
+            }
+            else
+            {
+                echo "error";
+            }
+            }
+        }
+    
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,7 +82,7 @@
   <div class="row mt-5">
       <div class="col-12 display-4 text-info">
      Informações pessoais
-        <a href="../../pages/me/me.php" type="button" class="btn btn-outline-info float-end">
+        <a href="../../pages/welcome.php" type="button" class="btn btn-outline-info float-end">
           <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
           </svg>
@@ -67,6 +101,7 @@
         ?>
           <div class="alert alert-success" role="alert">
             <strong>Dados alterados com sucesso</strong>
+            
          
           </div>
           <a class="btn btn-primary float-end mt-5" href="../../pages/me/me.php" role="button">Alterar Dados</a>

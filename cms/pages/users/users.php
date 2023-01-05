@@ -16,7 +16,10 @@
 <body>
 
   <?php
+
+  session_start();
   
+  $id = $_SESSION['id'];
 
   require('../../db/connect.php');
   $pdo = pdo_connect_mysql();
@@ -55,7 +58,10 @@
                     <th>Role</th>
                     <th>Ações</th>
             </tr>
-            <?php while($row = $stmt->fetch()): ?>
+            <?php while($row = $stmt->fetch()): 
+              if($row['id']!= $id){
+              
+              ?>
                 <tr>
                     <td><?php echo $row['username'];?> </td>
                     <td><?php echo $row['role'];?></td>
@@ -68,7 +74,7 @@
                     </td>
                 </tr>
                 
-            <?php endwhile;?>
+            <?php } endwhile;?>
                 
             </table>
 

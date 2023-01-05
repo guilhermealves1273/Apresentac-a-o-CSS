@@ -25,39 +25,16 @@
   $existemDadosPOST = false;
   if (isset($_POST) && !empty($_POST)) {
     $existemDadosPOST = true;
-    $tamanhoCorretoNome=True;
-    $intervaloCorreto=True;
+  
     extract($_POST);
-    // com o extract são criadas variáveis com todas as entradas do array, no caso $_POST
-    // os dados enviados pelo formulário são (ver atributo "name" nos campos dos formulários): 
-    //  - nomelivro
-    //  - numpaginas
-    //  - anolancamento
-    //  - id_autor
-    // Preparação de um array com os dados a inserir
+
     $dados=array($nome,$nivel);
 
-
-    if(strlen($dados[0])>0 and strlen($dados[0])<=100 and 0<=$dados[1] and $dados[1]<=100){
-    # preparar a query
-    $stmt= $pdo->prepare('Insert into ling_Prog(nome,nivel) values(?,?)');
+    $stmt= $pdo->prepare('Insert into ling_prog(nome,nivel) values(?,?)');
     $stmt->execute($dados);
 
-    } else{
-        if((strlen($dados[0]) <=0 or strlen($dados[0])>100) and ($dados[1]<0 or $dados[1]>100)) {
-            $tamanhoCorretoNome=False;
-            $intervaloCorreto=False;
-        } else if(strlen($dados[0]) <= 0 or strlen($dados[0])>100){
-            $tamanhoCorretoNome=False;
-        }else if($dados[1]<0 or $dados[1]>100){
-            $intervaloCorreto=False;
-        } else{
-            $tamanhoCorretoNome=True;
-            $intervaloCorreto=True;
-        }
 
-    
-    }}
+    }
 
   ?>
 <div class="container">
@@ -74,64 +51,28 @@
   </div>
 </div>
 
-
-
-<div class="row my-5">
-  <div class="col-12">
-    <?php
-    if ($existemDadosPOST==True and $tamanhoCorretoNome==True and $intervaloCorreto==True) {
-        
-    ?>
-      <div class="alert alert-success" role="alert">
-        <strong>Linguagem De Programação criada com sucesso.</strong>
-     
+  <div class="row my-5">
+      <div class="col-12">
+        <?php
+        if ($existemDadosPOST) {
+        ?>
+          <div class="alert alert-success" role="alert">
+            <strong>Linguagem de Programação criada com sucesso.</strong>
+          </div>
+          <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Inserir outra linguagem</a>
+        <?php
+        } else {
+        ?>
+          <div class="alert alert-danger" role="alert">
+            <strong>Acesso indevido a esta página.</strong>
+          </div>
+          <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Inserir Linguagem</a>
+        <?php
+        }
+        ?>
       </div>
-      <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Criar outra Linguagem</a>
-    <?php
-    } else {
-
-        if($tamanhoCorretoNome==False and $intervaloCorreto==False){
-    ?>
-
-    <div class="alert alert-danger" role="alert">
-        <strong>Tamanho do ''Nome'' muito longo ou não possui nenhum caracter!!</strong>
-      </div>
-      
-
-      <div class="alert alert-danger" role="alert">
-        <strong>O nivel tem que estar entre 0 e 100!!</strong>
-      </div>
-      <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Criar Linguagem</a>
-
-
-                <?php
-        } else if($tamanhoCorretoNome==False){
-    ?>
-      <div class="alert alert-danger" role="alert">
-        <strong>Tamanho do ''Nome'' muito longo ou não possui nenhum caracter</strong>
-      </div>
-      <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Criar Linguagem</a>
-    <?php
-        } else if($intervaloCorreto==False){  
-    ?>
-    <div class="alert alert-danger" role="alert">
-        <strong>O nivel tem que estar entre 0 e 100!!</strong>
-      </div>
-      <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Criar Linguagem</a>
-
-    <?php } else{?>     
-
-
-    <div class="alert alert-danger" role="alert">
-        <strong>Acesso indevido a esta página.</strong>
-      </div>
-      <a class="btn btn-primary float-end mt-5" href="../../pages/lingProg/criarLinguagem.php" role="button">Criar Linguagem</a>
-     </div>
-
-     <?php } }?>
-</div>
-
-</div>
+    </div>
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 

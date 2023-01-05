@@ -23,47 +23,46 @@
 
   // Verificação da existência de POST de informação, proveniente do formulário
   $existemDadosPOST = false;
-  if (isset($_POST) && !empty($_POST)) {
+  if (isset($_POST['uploadBtn']) == 'Criar') {
     $existemDadosPOST = true;
-    $tamanhoCorretoNome=True;
-    $tamanhoCorretoDescricao=True;
-
+   
     extract($_POST);
-    // com o extract são criadas variáveis com todas as entradas do array, no caso $_POST
-    // os dados enviados pelo formulário são (ver atributo "name" nos campos dos formulários): 
-    //  - nomelivro
-    //  - numpaginas
-    //  - anolancamento
-    //  - id_autor
-    // Preparação de um array com os dados a inserir
+
     $dados=array($nome,$descricao);
+    
+    $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+    $fileName = $_FILES['uploadedFile']['name'];
+    $fileSize = $_FILES['uploadedFile']['size'];
+    $fileType = $_FILES['uploadedFile']['type'];
+    $fileNameCmps = explode(".", $fileName);
+    $fileExtension = strtolower(end($fileNameCmps));
 
-    if(strlen($dados[0])<=100 and strlen($dados[0])>0 and strlen($dados[1]>0 and strlen($dados[1])<=200)){
-        # preparar a query
-    $stmt= $pdo->prepare('Insert into educacao(nome,descricao) values(?,?)');
+    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+    $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+    
+    if (in_array($fileExtension, $allowedfileExtensions)) {
+        $uploadFileDir = $_SERVER['DOCUMENT_ROOT'] . '/SIR/cms/uplink/uploaded_files/';
+        echo 'aqui'; exit();
+        // $uploadFileDir = '../../uplink/uplouded_files';
+        $dest_path = $uploadFileDir . $newFileName;
+       
+        if(move_uploaded_file($fileTmpPath, $dest_path))
+        {
+          $stmt = $pdo->prepare('INSERT INTO education(nome,descricao,imagem) VALUES (?, ?, ?)');
+        
+          $stmt->bindParam(1, $dados[0] , PDO::PARAM_STR);
+          $stmt->bindParam(2, $dados[1] , PDO::PARAM_STR);
+          $stmt->bindParam(3, $newFileName);
+          $stmt->execute();
 
-
-    $stmt->execute($dados);
-    }
-    else{
-
-        if(strlen($dados[0]) <=0 or strlen($dados[0])>100 and strlen($dados[1])<=0 or strlen($dados[1])>200) {
-            $tamanhoCorretoNome=False;
-            $tamanhoCorretoDescricao=False;
-        } else if(strlen($dados[0]) <=0 or strlen($dados[0])>100){
-            $tamanhoCorretoNome=False;
-        }else if(strlen($dados[1]) <=0 or strlen($dados[1])>200){
-            $tamanhoCorretoDescricao=False;
-        } else{
-            $tamanhoCorretoDescricao=True;
-            $tamanhoCorretoNome=True;
+        }
+        else
+        {
+            echo "error";
+        }
         }
 
 
-
-    }
-
-  
   } 
 
   ?>
@@ -84,62 +83,27 @@
 
     
     
-    <div class="row my-5">
+  <div class="row my-5">
       <div class="col-12">
         <?php
-        if ($existemDadosPOST==True and $tamanhoCorretoNome==True and $tamanhoCorretoDescricao==True) {
-            
+        if ($existemDadosPOST) {
         ?>
           <div class="alert alert-success" role="alert">
             <strong>Escola criada com sucesso.</strong>
-         
           </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir outra Escola</a>
+          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir outra escola</a>
         <?php
         } else {
-
-            if($tamanhoCorretoNome==False and $tamanhoCorretoDescricao==False){
-        ?>
-
-        <div class="alert alert-danger" role="alert">
-            <strong>Tamanho do ''Nome'' muito longo ou não possui nenhum caracter</strong>
-          </div>
-          
-
-          <div class="alert alert-danger" role="alert">
-            <strong>Tamanho do ''Descrição'' muito longa ou não possui nenhum caracter</strong>
-          </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir Escola</a>
-
-
-                    <?php
-            } else if($tamanhoCorretoNome==False){
         ?>
           <div class="alert alert-danger" role="alert">
-            <strong>Tamanho do ''Nome'' muito longo ou não possui nenhum caracter</strong>
-          </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir Escola</a>
-        <?php
-            } else if($tamanhoCorretoDescricao==False){  
-        ?>
-        <div class="alert alert-danger" role="alert">
-            <strong>Tamanho do ''Descrição'' muito longa ou não possui nenhum caracter</strong>
-          </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir Escola</a>
-
-        <?php } else{?>     
-
-
-        <div class="alert alert-danger" role="alert">
             <strong>Acesso indevido a esta página.</strong>
           </div>
-          <a class="btn btn-primary float-end mt-5" href="../../pages/about_me/criarEscola.php" role="button">Inserir Escola</a>
-         </div>
-
-         <?php } }?>
+          <a class="btn btn-primary float-end mt-5" href="../../pages/education/criarEscola.php" role="button">Inserir escola</a>
+        <?php
+        }
+        ?>
+      </div>
     </div>
-
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

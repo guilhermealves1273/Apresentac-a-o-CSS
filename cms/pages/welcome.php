@@ -33,7 +33,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/regular.min.css" integrity="sha512-aNH2ILn88yXgp/1dcFPt2/EkSNc03f9HBFX0rqX3Kw37+vjipi1pK3L9W08TZLhMg4Slk810sPLdJlNIjwygFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/solid.min.css" integrity="sha512-uj2QCZdpo8PSbRGL/g5mXek6HM/APd7k/B5Hx/rkVFPNOxAQMXD+t+bG4Zv8OAdUpydZTU3UHmyjjiHv2Ww0PA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
 
@@ -53,7 +53,7 @@
         <?php if($_SESSION['role']=='admin'){?>
         <li class="nav-item">
 
-            <a class="nav-link" aria-current="page" href="./users/users.php">Users</a>
+            <a class="nav-link " aria-current="page" href="./users/users.php">Users</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="./soft_skills/soft_skills.php">Soft Skills</a>
@@ -85,6 +85,10 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="../../index.php">Portfólio</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="../auth/logout.php">Logout</a>
           </li>
 
@@ -93,7 +97,7 @@
 <?php  }else if($_SESSION['role']=='gestor'){?>
 
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="">Mensagens</a>
+        <a class="nav-link" aria-current="page" href="./mensagens/listagem.php">Mensagens</a>
     </li>
     <li class="nav-item">
             <a class="nav-link" href="../auth/logout.php">Logout</a>
@@ -104,6 +108,9 @@
         <a class="nav-link" aria-current="page" href="">Não tem permissão
         </a>
     </li>
+    <li class="nav-item">
+            <a class="nav-link" href="../auth/logout.php">Logout</a>
+          </li>
 
     <?php } ?>
 

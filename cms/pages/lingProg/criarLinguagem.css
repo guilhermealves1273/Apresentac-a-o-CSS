@@ -7,9 +7,6 @@
     width: 45%;
     height: 75%;
     padding-bottom: 20px;
-    box-shadow: 3px 2px 10px 10px rgba(0, 0, 0, 0.2); 
-  
-
 
 }
 body{
@@ -42,8 +39,13 @@ a{border-radius: 4px 4px 4px 4px ;
     width: 50px;
 }
 
-
-
+.nivelLabel{
+    padding-top:20px;
+    padding-left: 0.5rem;
+}
+.nomeLabel{  
+    
+}
 .voltarBT{
     
     padding:4px;
@@ -58,7 +60,6 @@ a{border-radius: 4px 4px 4px 4px ;
     padding:4px;
     width: 70px;
     height: 35.5px;
-    background-color:white;
 }
 
 .topleft {
@@ -68,16 +69,3 @@ a{border-radius: 4px 4px 4px 4px ;
     font-size: 18px;
   }
 
-#nome{
-    width: 300px;
-
-    font-size: 20px;
-    border-radius: 5px;
-    border: 1px solid black;
-   
-    
-}
-#LabelFrase{
-   position: relative;
-   margin: 10px;
-}

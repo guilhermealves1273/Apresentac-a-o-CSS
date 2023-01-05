@@ -45,11 +45,17 @@
     extract($_POST);
    
     $dados=array($nome,$pass,$role);
+    $param_password = password_hash($dados[1], PASSWORD_DEFAULT);
+    
     # preparar a query
-    $stmt= $pdo->prepare('Insert into user(username,password,role) values(?,?,?)');
+    $stmt= $pdo->prepare('Insert into user(username,password,role) values(:username,:pass,:role)');
+    $stmt->bindParam(":username", $dados[0], PDO::PARAM_STR);
+    $stmt->bindParam("pass", $param_password, PDO::PARAM_STR);
+    $stmt->bindParam(":role", $dados[2], PDO::PARAM_STR);
+    
 
     # executar instrução 
-    $stmt->execute($dados);
+    $stmt->execute();
 
   } 
 

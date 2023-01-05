@@ -24,7 +24,7 @@
     <!-- <label for="nome" id="LabelFrase">Frase:</label> -->
     <input type="text" name="nome" id="nome" >
     </div>
-    <input type="hidden" value="sem_role" name="role" id="role">
+    
     <input type="submit" value="Criar" id="bt_criar">
     <input type="reset" value="Limpar" class="bt_limpar">
 </form>

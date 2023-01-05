@@ -22,36 +22,66 @@ $dados=$stmt->fetch();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Editar Linguagem</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="editLinguagem.css">
+
+    
 </head>
 <body>
+<div class="container text-center">
+<div class="row mt-5">
+  <div class="col-12 display-4 text-info">
+    Editar Linguagem Prog.
+  </div>
+</div>
+<div class="row my-5">
+  <div class="col-12">
+    <div class="list-group">
 
 <form action="../../functions/lingProg/editarLinguagem.php" method="post">
 <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>">
-<div>
+   
+    <div>
     <label> Nome:</label>
     <input type="text" id="nome" name="nome" value="<?php echo $dados['nome']?>">
 </div>
 
-<div>
+<div class="nivelDiv">
     <label> Nivel:</label>
     <input type="text" id="nivel" name="nivel" value="<?php echo $dados['nivel']?>">
 </div>
 
-<div>
-    <input type="submit" value="Atualizar">
-</div>
-
+    <div>
+        <input type="submit" value="Atualizar" id="AtualizarBT">
+        <input type="reset" value="Repor" class="bt_limpar">
+    </div>
+   
 </form>
 
+</div>
+  </div>
+</div>
+<button onclick="window.location.href='./listagem.php'" class="voltarBT topleft fa fa-arrow-left"></button>
+</div>
 
-
-
-
+<script src="https://use.fontawesome.com/62e43a72a9.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -72,4 +72,5 @@ create table mensagens(
 );
 
 
+insert into user(username, password, role) values('admin', '$2y$10$5x3eEVSBk4mZXZPvh7Mwsur8/odYs0zmPmzsNjj0WqOAtBKHt.zua', 'admin');
 

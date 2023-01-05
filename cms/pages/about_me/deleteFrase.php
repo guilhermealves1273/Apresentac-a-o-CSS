@@ -47,11 +47,13 @@ $dados=$stmt->fetch();
 
 <form action="../../functions/about_me/deleteFraseDB.php" method="post">
 <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>"> 
-    <div class="padding">
+    <div class="">
         <label id="frase" name="frase"><h4 id="labelFrase">Frase</h4> <div class="quadrado"><?php echo $dados['frase']?></div></label>
     </div>
     
-    <input type="submit" value="Apagar" id="botao">
+    <button type="submit" id="botao">
+        <i class="fa fa-trash"></i>
+    </button>
    
 </form>
 

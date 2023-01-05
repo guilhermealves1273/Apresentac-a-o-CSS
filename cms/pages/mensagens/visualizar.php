@@ -3,67 +3,113 @@
 session_start();
 $id=$_GET['id'];
 $idUser=$_SESSION["id"];
+$string="vista";
 
 
 require('../../db/connect.php');
 $pdo = pdo_connect_mysql();
 
-# podemos utilizar diretamente o método ->query() uma vez que, ainda, não estamos a utilizar varíaveis na instrução SQL
-$stmt = $pdo->prepare('SELECT * from mensagens where id=:id');
-$stmt->bindParam(":id", $id, PDO::PARAM_STR);
-$stmt->execute();
+$stmt1 = $pdo->prepare('SELECT nome,email,informacao,estado from mensagens where id=?');
+$stmt1->bindParam(1, $id, PDO::PARAM_INT);
+$stmt1->execute();
 
  # definir o fetch mode
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-$dados=$stmt->fetch();
+$stmt1->setFetchMode(PDO::FETCH_ASSOC);
+$dados=$stmt1->fetch();
+
+
+if($dados['estado']=="nao vista"){
+    $stmt= $pdo->prepare('Update mensagens set estado=?, idUser=? where id=? ');
+    $stmt->bindParam(1, $string, PDO::PARAM_STR);
+    $stmt->bindParam(2, $idUser, PDO::PARAM_INT);
+    $stmt->bindParam(3, $id, PDO::PARAM_INT);
+    
+    $stmt->execute();
+    
+}
+
+
 
 ?>
+
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visualizar Mensagem</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Mensagem</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="visualizar.css">
 </head>
 <body>
-
-<form action="../../functions/mensagens/marcarVista.php" method="post">
-<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>">
-<input type="hidden" class="form-control" id="idUser" name="idUser" value="<?php echo $idUser?>">
-<input type="hidden" class="form-control" id="string" name="string" value="vista">
-<div>
-    <label> Nome: <?php echo $dados['nome']?></label>
-</div>
-<div>
-    <label> E-Mail: <?php echo $dados['email']?></label>
-</div>
-<div>
-    <label> Informacao: <?php echo $dados['informacao']?></label>
-</div>
-<div>
-    <label> estado: <?php echo $dados['estado']?></label>
-</div>
+    <div>
+        <button onclick="window.location.href='./listagem.php'" class="voltarBT topleft fa fa-arrow-left "></button>
+    </div>
+<div class="container text-center">
+    <div class="row mt-5">
+        <div class="col-12 display-5 text-info">
+        Mensagem
+        </div>
+    </div>
+<div class="row my-5">
+    <div class="col-12">
+        <div class="list-group">
 
 
 
-
-<div>
-    <input type="submit" value="Marcar como vista ">
-</div>
+<form action="../../functions/contactos/deleteContactoDB.php" method="post">
+<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id?>"> 
 
 
+    <div >
+        <label id="nome" name="nome"><h4 id="label">Nome</h4> <div class="quadrado"><?php echo $dados['nome']?></div></label>
+    </div>
+
+    <div class="Div">
+        <label id="descricao" name="descricao"><h4 id="label">Email:</h4> <div class="quadrado"><?php echo $dados['email']?></div></label>
+    </div>
+
+    <div class="Div">
+        <label id="descricao" name="descricao"><h4 id="label">Informação</h4> <div class="quadrado"><?php echo $dados['informacao']?></div></label>
+    </div>
+    <div class="Div">
+        <label id="descricao" name="descricao"><h4 id="label">Estado</h4> <div class="quadrado"><?php echo $dados['estado']?></div></label>
+    </div>
+    
+    
+
+
+    <button type="submit" id="botao">
+        <i class="fa fa-envelope"></i>
+    </button>
+   
+   
 </form>
 
-<a href="./listagem.php">Voltar  </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
-
-
-
-
+<script src="https://use.fontawesome.com/62e43a72a9.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

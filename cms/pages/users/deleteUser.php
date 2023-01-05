@@ -55,7 +55,9 @@ $dados=$stmt->fetch();
         </div>
     <?php }else{ ?>
     
-        <input type="submit" value="Apagar" id="botao">
+        <button type="submit" id="botao">
+            <i class="fa fa-trash"></i>
+        </button>
     <?php } ?>
 </form>
 
